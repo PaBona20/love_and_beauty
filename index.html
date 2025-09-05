@@ -236,15 +236,31 @@ ul.mobile li {
   nav ul.desktop {display: none;} /* hide desktop nav */
 }
 
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #b34d8c; /* soft pink-purple */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.logo-icon {
+  font-size: 1.8rem;
+}
+
+
   </style>
 </head>
 <body>
   <header>
   <div class="container nav">
     <a href="#" class="logo">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span id="brandName">Love and Beauty</span>
-    </a>
+  <span class="logo-icon">💖</span>
+  <span class="logo-text">Love & Beauty</span>
+</a>
+
 
     <!-- Hamburger (visible on mobile only) -->
     <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
