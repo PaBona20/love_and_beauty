@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love and Beauty - Salon Féminin</title>
+  <style>
+    :root {
+      --primary: #e91e63;
+      --secondary: #f8bbd0;
+      --dark: #333;
+      --light: #fff;
+      --accent: #ff80ab;
+      --gold: #fdd835;
+    }
+
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {font-family: Arial, sans-serif; line-height: 1.6; background: var(--light); color: var(--dark);}
+
+    header {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: var(--light); display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000;
+    }
+    header h1 {color: var(--primary); font-size: 1.5rem;}
+    nav ul {list-style: none; display: flex; gap: 20px;}
+    nav ul li a {text-decoration: none; color: var(--dark); font-weight: bold;}
+
+    /* Hamburger */
+    .hamburger {display: none; flex-direction: column; cursor: pointer;}
+    .hamburger div {width: 25px; height: 3px; background: var(--dark); margin: 4px 0;}
+
+    nav ul.mobile {display: none; flex-direction: column; margin-top: 10px;}
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(rgba(233,30,99,0.7),rgba(233,30,99,0.7)), url('https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg') center/cover no-repeat;
+      color: var(--light); padding: 120px 20px; text-align: center;
+    }
+    .hero h2 {font-size: 2rem; margin-bottom: 10px;}
+    .hero p {margin-bottom: 20px;}
+    .btn {background: var(--gold); color: var(--dark); padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; font-size: 1rem;}
+    .btn:hover {background: var(--accent); color: var(--light);}
+
+    /* Sections */
+    section {padding: 60px 20px; max-width: 1000px; margin: auto; opacity: 0; transform: translateY(30px); transition: all 0.8s ease;}
+    section.revealed {opacity: 1; transform: translateY(0);}
+    section h2 {text-align: center; color: var(--primary); margin-bottom: 20px; font-size: 1.8rem;}
+
+    /* Services */
+    .services {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px;}
+    .service {background: var(--secondary); padding: 20px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1);}
+    .service h3 {margin-bottom: 10px; color: var(--dark);}
+    .price {color: var(--primary); font-weight: bold;}
+
+    /* Booking */
+    form {display: grid; gap: 15px;}
+    form label {font-weight: bold;}
+    form input, form select, form textarea {
+      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;
+    }
+    form button {background: var(--primary); color: var(--light); border: none; padding: 12px; border-radius: 8px; cursor: pointer;}
+    form button:hover {background: var(--accent);}
+
+    /* Gallery */
+    .gallery {display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 10px;}
+    .gallery img {width: 100%; border-radius: 8px; opacity: 0; transform: scale(0.95); transition: all 0.8s ease;}
+    .gallery img.show {opacity: 1; transform: scale(1);}
+
+    /* Floating buttons */
+    .floating-btn, .back-to-top {
+      position: fixed; bottom: 20px; right: 20px;
+      border: none; border-radius: 50%; padding: 15px; cursor: pointer;
+      background: var(--accent); color: #fff; font-size: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: all 0.3s ease; z-index: 999;
+    }
+    .floating-btn:hover, .back-to-top:hover {background: var(--gold);}
+    .back-to-top {right: 80px; display: none;}
+
+    footer {text-align: center; padding: 20px; background: var(--secondary); margin-top: 40px;}
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {display: none;}
+      .hamburger {display: flex;}
+      nav ul.mobile {display: none; background: var(--light); padding: 10px;}
+      nav ul.mobile li {margin: 10px 0;}
+      .hero h2 {font-size: 1.6rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Love and Beauty</h1>
+    <nav>
+      <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+      </div>
+      <ul id="navLinks">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#booking">Réservation</a></li>
+        <li><a href="#gallery">Galerie</a></li>
+      </ul>
+      <ul id="mobileMenu" class="mobile">
+        <li><a href="#services" onclick="toggleMenu()">Services</a></li>
+        <li><a href="#booking" onclick="toggleMenu()">Réservation</a></li>
+        <li><a href="#gallery" onclick="toggleMenu()">Galerie</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Votre beauté, notre passion 💖</h2>
+    <p>Salon exclusivement féminin basé en France. Réservez maintenant votre moment de bien-être.</p>
+    <button class="btn" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">Réserver maintenant</button>
+  </section>
+
+  <section id="services">
+    <h2>Nos Services</h2>
+    <div class="services">
+      <div class="service"><h3>Coupe de cheveux</h3><p class="price">30 €</p></div>
+      <div class="service"><h3>Coloration</h3><p class="price">50 €</p></div>
+      <div class="service"><h3>Manucure</h3><p class="price">25 €</p></div>
+      <div class="service"><h3>Maquillage</h3><p class="price">40 €</p></div>
+    </div>
+  </section>
+
+  <section id="booking">
+    <h2>Réservez votre rendez-vous</h2>
+    <form id="bookingForm">
+      <label for="name">Nom</label>
+      <input type="text" id="name" required>
+      <label for="phone">Téléphone</label>
+      <input type="tel" id="phone" required>
+      <label for="service">Service</label>
+      <select id="service" required>
+        <option value="Coupe de cheveux">Coupe de cheveux</option>
+        <option value="Coloration">Coloration</option>
+        <option value="Manucure">Manucure</option>
+        <option value="Maquillage">Maquillage</option>
+      </select>
+      <label for="date">Date</label>
+      <input type="date" id="date" required>
+      <label for="time">Heure</label>
+      <input type="time" id="time" required>
+      <label for="city">Ville</label>
+      <input type="text" id="city" required>
+      <label for="address">Adresse</label>
+      <textarea id="address" rows="3" required></textarea>
+      <button type="submit">Envoyer via WhatsApp</button>
+    </form>
+  </section>
+
+  <section id="gallery">
+    <h2>Galerie</h2>
+    <div class="gallery">
+      <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg" alt="Salon 1">
+      <img src="https://images.pexels.com/photos/3993448/pexels-photo-3993448.jpeg" alt="Salon 2">
+      <img src="https://images.pexels.com/photos/3738346/pexels-photo-3738346.jpeg" alt="Salon 3">
+    </div>
+  </section>
+
+  <!-- Floating buttons -->
+  <button class="floating-btn" onclick="document.querySelector('#booking').scrollIntoView({behavior:'smooth'})">📅</button>
+  <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆️</button>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Love and Beauty - Tous droits réservés</p>
+  </footer>
+
+  <script>
+    // Hamburger toggle
+    function toggleMenu(){
+      const menu=document.getElementById('mobileMenu');
+      menu.style.display = menu.style.display==='flex' ? 'none':'flex';
+    }
+
+    // Reveal sections
+    const sections=document.querySelectorAll('section');
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){entry.target.classList.add('revealed');}
+      });
+    },{threshold:0.1});
+    sections.forEach(sec=>observer.observe(sec));
+
+    // Gallery stagger animation
+    const galleryImgs=document.querySelectorAll('.gallery img');
+    const galleryObs=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    },{threshold:0.2});
+    galleryImgs.forEach(img=>galleryObs.observe(img));
+
+    // Back to top toggle
+    const backBtn=document.querySelector('.back-to-top');
+    window.addEventListener('scroll',()=>{backBtn.style.display=window.scrollY>400?'block':'none';});
+
+    // Booking form -> WhatsApp
+    document.getElementById('bookingForm').addEventListener('submit',function(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value;
+      const phone=document.getElementById('phone').value;
+      const service=document.getElementById('service').value;
+      const date=document.getElementById('date').value;
+      const time=document.getElementById('time').value;
+      const city=document.getElementById('city').value;
+      const address=document.getElementById('address').value;
+      const msg=`Bonjour Love and Beauty, je souhaite réserver ${service} le ${date} à ${time}. Nom: ${name}, Tel: ${phone}. Adresse: ${address}, ${city}.`;
+      const url=`https://wa.me/33768592607?text=${encodeURIComponent(msg)}`;
+      window.open(url,'_blank');
+    });
+
+    // Year
+    document.getElementById('year').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>
