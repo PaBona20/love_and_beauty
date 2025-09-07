@@ -99,8 +99,7 @@
     .avatar{width:72px;height:72px;border-radius:999px;object-fit:cover;border:2px solid rgba(183,110,121,.08)}
 
     .gallery{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
-    .gallery img, video{border-radius:.75rem;aspect-ratio:1/1;object-fit:cover}
-    @media (max-width: 800px){.gallery{grid-template-columns:1fr 1fr}}
+    .gallery img,.gallery video{width:100%;height:100%;border-radius:.75rem;aspect-ratio:1/1;object-fit:cover;display:block}@media(max-width:800px){.gallery{grid-template-columns:1fr 1fr}}@media(max-width:500px){.gallery{grid-template-columns:1fr}}
 
     form{display:grid;gap:1rem}
     .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -258,7 +257,7 @@ ul.mobile li {
   <div class="container nav">
     <a href="#" class="logo">
   <span class="logo-icon">💖</span>
-  <span class="logo-text">Love <br>& Beauty</span>
+  <span class="logo-text">BeautifiMe</span>
 </a>
 
 
@@ -344,7 +343,7 @@ ul.mobile li {
             <span class="chip">⏱ 2–4 hrs</span>
             <h3 data-i18n="services.braids">Tresses</h3>
             <p class="muted" data-i18n="services.braids_desc">Knotless, box, nattes — styles protecteurs.</p>
-            <p class="price">€70+</p>
+            <p class="price">€50+</p>
           </div>
           <div class="card" data-tilt>
             <span class="chip">⏱ 60–120 min</span>
@@ -373,7 +372,7 @@ ul.mobile li {
               <tr><td data-i18n="pricing.table.silk">Lissage (Silk press)</td><td>€60</td><td>€75</td><td>€90</td></tr>
               <tr><td data-i18n="pricing.table.treatment">Soin profond</td><td>€40</td><td>€50</td><td>€60</td></tr>
               <tr><td data-i18n="pricing.table.color">Coloration (simple)</td><td>€75</td><td>€95</td><td>€120</td></tr>
-              <tr><td data-i18n="pricing.table.braids">Tresses (Knotless)</td><td>€70</td><td>€100</td><td>€150</td></tr>
+              <tr><td data-i18n="pricing.table.braids">Tresses (Bob-Marley, Ghana weaving,Knotless)</td><td>€70</td><td>€100</td><td>€150</td></tr>
             </tbody>
           </table>
           <p class="help" style="margin-top:.8rem" data-i18n="pricing.note">Les prix varient selon la longueur et la densité des cheveux. -10% étudiante (Lun–Mer, avec carte).</p>
@@ -450,7 +449,7 @@ ul.mobile li {
             <source src="videos/video3.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          
+
       </div>
     </section>
 
