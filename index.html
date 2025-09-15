@@ -585,8 +585,8 @@ ul.mobile li {
             <h3 data-i18n="contact.hours">Horaires</h3>
             <p class="muted">Lun–Jeu 9:00–19:00 • Ven–Sam 9:00–20:00 • Dim 12:00–18:00</p>
             <p>
-              <a class="btn-success" href="https://wa.me/33768592607" target="_blank" rel="noopener">WhatsApp</a>
-              <a class="btn" href="tel:+33768592607">Appeler</a>
+              <a class="btn-success" href="https://wa.me/33753562929" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn" href="tel:+33753562929">Appeler</a>
             </p>
             <p class="help">Parking disponible • Accessible</p>
           </div>
@@ -826,7 +826,7 @@ ul.mobile li {
       const msg = lang==='fr' ? msgFr : msgEn;
 
       // WhatsApp link — remove '+' for wa.me
-      const waNumber = '33768592607';
+      const waNumber = '33753562929';
       whatsAppLink.href = `https://wa.me/${waNumber}?text=${msg}`;
 
       confirmText.textContent = (lang==='fr') ? `Demande #${id} prête — vous pouvez l'envoyer via WhatsApp.` : `Request #${id} ready — you may send it via WhatsApp.`;
@@ -867,7 +867,7 @@ ul.mobile li {
       const city=document.getElementById('city').value;
       const address=document.getElementById('address').value;
       const msgFR=`Bonjour Love and Beauty, je souhaite réserver ${service} le ${date} à ${time}. Nom: ${name}, Tel: ${phone}. Adresse: ${address}, ${city}.`;
-      const url=`https://wa.me/33768592607?text=${encodeURIComponent(msgFR)}`;
+      const url=`https://wa.me/33753562929?text=${encodeURIComponent(msgFR)}`;
       document.getElementById('whatsAppLink').href=url;
       document.getElementById('confirmModal').classList.add('show');
     });
